@@ -2,7 +2,7 @@ project "yaml-cpp"
 	kind "StaticLib"
 	language "C++"
 
-	targetdir ("../../(bin/" .. output_dir .. "/%{prj.name}")
+	targetdir ("../../bin/" .. output_dir .. "/%{prj.name}")
 	objdir ("../../bin-obj/" .. output_dir .. "/%{prj.name}")
 
 	files
@@ -21,13 +21,23 @@ project "yaml-cpp"
 	filter "system:windows"
 		systemversion "latest"
 		cppdialect "C++17"
-		staticruntime "off"
+		staticruntime "on"
 
+	filter {"system:windows", "configurations:Debug"}
+		buildoptions {
+
+			"/MTd"
+		}
+	filter {"system:windows", "configurations:Release"}
+		buildoptions {
+
+			"/MT"
+		}
 	filter "system:linux"
 		pic "On"
 		systemversion "latest"
 		cppdialect "C++17"
-		staticruntime "off"
+		staticruntime "on"
 
 	filter "configurations:Debug"
 		runtime "Debug"
