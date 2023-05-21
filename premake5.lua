@@ -1,6 +1,7 @@
 project "yaml-cpp"
 	kind "StaticLib"
 	language "C++"
+	location "./"
 
 	targetdir ("../../bin/" .. output_dir .. "/%{prj.name}")
 	objdir ("../../bin-obj/" .. output_dir .. "/%{prj.name}")
