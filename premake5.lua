@@ -19,6 +19,11 @@ project "yaml-cpp"
 		"include"
 	}
 
+	defines
+	{
+		"YAML_CPP_STATIC_DEFINE"
+	}
+
 	filter "system:windows"
 		systemversion "latest"
 		cppdialect "C++17"
