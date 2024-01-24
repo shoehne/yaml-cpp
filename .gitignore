@@ -3,5 +3,6 @@ build/
 /bazel-*
 bin
 bin-int
-yaml-cpp.vcxproj
-yaml-cpp.vcxproj.filters
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
