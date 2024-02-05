@@ -29,16 +29,6 @@ project "yaml-cpp"
 		cppdialect "C++17"
 		staticruntime "on"
 
-	filter {"system:windows", "configurations:Debug"}
-		buildoptions {
-
-			"/MTd"
-		}
-	filter {"system:windows", "configurations:Release"}
-		buildoptions {
-
-			"/MT"
-		}
 	filter "system:linux"
 		pic "On"
 		systemversion "latest"
@@ -46,9 +36,22 @@ project "yaml-cpp"
 		staticruntime "on"
 
 	filter "configurations:Debug"
+		defines "DEBUG"
 		runtime "Debug"
 		symbols "on"
+		filter {"configurations:Debug", "system:windows"}
+			buildoptions {"/MTd"}
 
 	filter "configurations:Release"
+		defines "RELEASE"
 		runtime "Release"
 		optimize "on"
+		filter {"configurations:Release", "system:windows"}
+			buildoptions {"/MT"}
+
+	filter "configurations:Distribution"
+		defines "DISTRIBUTION"
+		runtime "Release"
+		optimize "on"
+		filter {"configurations:Distribution", "system:windows"}
+			buildoptions {"/MT"}
